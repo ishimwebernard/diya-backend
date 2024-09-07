@@ -18,7 +18,7 @@ const createOrder = async(req, res, next) => {
     }
 
     const createResult = await Order.create({
-        ClientId: body.ClientId, Price:body.Price, Status:body.Status
+        ClientId: body.ClientId, Price:body.Price, Status:body.Status, Items: body.Items
     })
     return res.status(201).json({
         message: 'Order Added succesfully'
@@ -32,8 +32,14 @@ const getAllOrders = async(req, res, next) => {
     })
 }
 
-const updateOrder = async(req, res, next) => {
-    
+const deleteOrder = async(req, res, next) =>{
+    const data = await Order.destroy({
+        where: {
+            id: req. body.id
+        }
+    })
+    console.log(data)
+    return res.status(200).json({message: 'Succesfully deleted the order'})
 }
 
-module.exports = {createOrder, getAllOrders}
+module.exports = {createOrder, getAllOrders, deleteOrder}

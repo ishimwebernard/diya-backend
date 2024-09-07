@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Users.init({
-    userType: DataTypes.ENUM('0','1','2'),
+    userType: DataTypes.INTEGER,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    children: DataTypes.STRING,
+    principal: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Users',

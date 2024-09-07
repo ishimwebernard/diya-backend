@@ -23,12 +23,20 @@ const createProduct = async(req, res, next) => {
 }
 const getAllProducts = async(req, res, next) => {
     const data = await Product.findAll();
-    return res.status(200).json({
-        data
-    })   
+    return res.status(200).json(data)   
+}
+
+const deleteProduct = async(req, res, next) =>{
+    const data = await Product.destroy({
+        where: {
+            id: req. body.id
+        }
+    })
+    console.log(data)
+    return res.status(200).json({message: 'Succesfully deleted the product'})
 }
 // const updateProduct = async(req, res, next) => {
 //     const productId = req.params.id;
 //     const result = await Product.findOne({where: {id}})
 // }
-module.exports = {createProduct, getAllProducts}
+module.exports = {createProduct, getAllProducts, deleteProduct}
