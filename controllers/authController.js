@@ -17,14 +17,12 @@ const login = async(req, res, next) =>{
     }
 
     return res.status(200).json({
-            status: 'Success'
+            status: 'Success',
+            role: result.userType
     })
 }
 
-const addChildren = async(req, res, next) => {
 
-    
-}
 
 const signUp = async(req, res, next) => {
     const body = req.body;
@@ -84,4 +82,4 @@ const getUserByPhone = async(req, res, next) => {
 
     return res.status(200).json({userWithId})
 }
-module.exports = {signUp, login, addChildren, getUserByPhone}
+module.exports = {signUp, login, getUserByPhone}
