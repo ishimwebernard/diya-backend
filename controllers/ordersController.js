@@ -41,5 +41,11 @@ const deleteOrder = async(req, res, next) =>{
     console.log(data)
     return res.status(200).json({message: 'Succesfully deleted the order'})
 }
-
-module.exports = {createOrder, getAllOrders, deleteOrder}
+const getOrdersByCustomer = async(req, res, next)=>{
+    console.log(req.body.ClientId)
+    const data = await Order.findOne({
+        where: {ClientId: req.body.ClientId}
+    })
+    return res.status(200).json(data)
+}
+module.exports = {createOrder, getAllOrders, deleteOrder, getOrdersByCustomer}
