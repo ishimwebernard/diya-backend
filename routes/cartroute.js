@@ -1,7 +1,6 @@
-const {signUp, login, addChildren, getUserByPhone}  =  require('../controllers/authController')
-const router = require('express').Router();
+const {addCart} = require('../controllers/cart')
+const router = require('express').Router()
 
-router.route('/signup').post(signUp)
-router.route('/login').post(login)
-router.route('/getUserByPhone').post(getUserByPhone)
+router.route('/addCart').post(addCart)
+
 module.exports = router
